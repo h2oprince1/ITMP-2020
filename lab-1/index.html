@@ -1,21 +1,40 @@
-
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Lab - Multimedia Programming 2563 ITKMITL</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
 	<link rel=stylesheet href="../src/reset.css">
 	<link rel=stylesheet href="lab.css">
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
-<body class="paper">
-	<div id="app">
-		<input type="number"  v-model="n">
-		<div class="space"></div>
-		<h3>สูตรคูณแม่{{n}}</h3>
-		<h4
-		v-for="i in 12"
-		>{{n}} x {{i}} = {{x(i)}}</h4>
-		
+<body class="paper" style="background-color: orangered" >
+	<div id="app" class="columns is-desktop">	
+	<div class="tile is-ancestor">
+		<div class="tile is-4 is-vertical is-parent">
+		  <div class="tile is-child box">
+			<p class="title">แม่สูตรคูณ</p>
+			<input type="number" v-model='n'>
+		  </div>
+		  <div class="tile is-child box">
+			<p class="title">จำนวนตัวคูณ</p>
+			<input type="number" v-model='row'>
+		  </div>
+		</div>
+		<div class="tile is-parent">
+		  <div class="tile is-child box">
+			<p class="title">สูตรคูณแม่ {{n}}</p>
+			<div class="space"></div>
+		<h5>แม่ก่อนหน้า -> แม่ {{before_n}}</h5>
+		<h3 v-for="i in r"
+		>{{n}} x {{i}} = {{x(i)}}</h3>
+		<h2>ผลรวม <b>{{sum(row)}}</b></h2>
+		</div>
+		  </div>
+		</div>
+	  </div>
 	</div>
 
 	<script>
@@ -23,47 +42,34 @@
 			el: '#app',
 			data: {
 				n: 2,
+				row: 12,
+				before_n : 1,
+
 			},
 			methods:{
 				x: function(row){
 					return this.n*row
+				},
+				sum: function(row){
+					a = 0
+					for (var i = 1; i <= row; i++) {
+						a += (this.n * i)
+					}
+					return a
 				}
 			},
 			computed: {
-				x2: function(){
-					return this.n*2
+				r: function(){
+					return parseInt(this.row)
 				},
-				x3: function(){
-					return this.n*3
-				},
-				x4: function(){
-					return this.n*4
-				},
-				x5: function(){
-					return this.n*5
-				},
-				x6: function(){
-					return this.n*6
-				},
-				x7: function(){
-					return this.n*7
-				},
-				x8: function(){
-					return this.n*8
-				},
-				x9: function(){
-					return this.n*9
-				},
-				x10: function(){
-					return this.n*10
-				},
-				x11: function(){
-					return this.n*11
-				},
-				x12: function(){
-					return this.n*12
-				}
+			},
+		watch: {
+			n: function(a,b){
+				this.before_n = b
 			}
+		}
+
+
 		})
 	</script>
 </body>
