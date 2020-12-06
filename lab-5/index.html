@@ -12,7 +12,7 @@
 	<div id="canvas">
 		<section id="canvas_header">
 			<div>
-				แสดงคะแนน
+				{{score}} แสดงคะแนน
 			</div>
 		</section>
 		<section id="canvas_main" :data-play="play">
@@ -28,7 +28,14 @@
 
 			</main>
 		</section>
-		
+		<section id="canvas_footer">
+			<div v-if="play" class="btn" id="toggle" @click="click()">
+				Toggle
+			</div>
+			<div v-if="!play" class="btn" id="endgame" onclick="window.location.reload()">
+				Restart
+			</div>
+		</section>
 	</div>
 
 	<script>
@@ -74,13 +81,13 @@
 						let run = this.fruits[f].run
 						if (run) {
 							this.fruits[f].pst += this.fruits[f].step
-						}//  เดิน
+						}//walk
 						if (this.fruits[f].pst == 11 && this.isRightArrow == 1) {
 							this.fruits[f].pst = 13
 							this.fruits[f].step = 3
 						}
 					}
-					
+				
 				}
 			}
 		})
