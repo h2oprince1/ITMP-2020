@@ -70,6 +70,19 @@
 					
 
 				},
+				correct :function(){
+					this.row += 1
+					this.pick = rand(1,this.row*this.row)
+					this.score += 1
+					this.time += 3
+					this.h = rand(0,359)
+					this.l = rand(20,80)
+					
+				},
+				incorrect : function(){
+					this.time -= 5
+					this.score -= 2
+				}
 				
 			}
 		})
