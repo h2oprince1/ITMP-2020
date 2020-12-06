@@ -87,11 +87,11 @@
 							this.fruits[f].step = 3
 						}
 						if (this.fruits[f].pst == 12 || this.fruits[f].pst == 16) {
-							if (this.fruits[f].pst == 16 && this.fruits[f].type == "yellow" ) {
+							if (this.fruits[f].pst == 16 && this.fruits[f].type == "yellow" && this.fruits[f].run == true) {
 								this.score++
 								this.fruits[f].run = false
 
-							} else if (this.fruits[f].pst == 12 && this.fruits[f].type == "red") {
+							} else if (this.fruits[f].pst == 12 && this.fruits[f].type == "red" && this.fruits[f].run == true) {
 								this.score++
 								this.fruits[f].run = false
 
