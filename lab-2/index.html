@@ -25,29 +25,63 @@
 	</div>
 	
 
+
 	<script>
 		fetch('https://jsonplaceholder.typicode.com/users')
 		.then(response => response.json())
-		.then(json => {console.log(json)})
-
+		.then(json => {console.log(json)
+			app.users = json
+			app.person = json[0]
+		})
 		
 		let app = new Vue({
 			el: '#app',
-			data: {
-				users :[],
-				person:{
-					id:0,
-					name:'..loading',
-					username:'..loading',
-					email:'..loading',
-					website:'..loading',
-					company:{
-						name : '..loading',
-					}
-				}	
-			}
+			methods:{
+				viewBio: function(user){
+					this.person = user
+					this.yesno.answer = "อยากรู้ คลิกเลย"
+					this.yesno.image = ""
+				},
+				isthisgood: function(){
+					fetch('https://yesno.wtf/api')
+			.then(response => response.json())
+			.then(json => {console.log(json)
+			app.yesno = json
 		})
 
+				}
+			},
+			data: {
+				yesno : {"answer":"อยากรู้ คลิกเลย",
+					"forced":false,
+					"image":""
+					},
+				person : {
+						"id": 1,
+						"name": "________",
+						"username": "________",
+						"website": "________",
+						"company": {
+							"name": "________",
+							"catchPhrase": "________",
+							"bs": "________",
+						}		
+				},
+				users : [{
+					"id": 1,
+					"name": "______",
+					"username": "______",
+					"email": "______",
+					"website": "______",
+					"company": {
+						"name": "______",
+						"catchPhrase": "______",
+						"bs": "______"
+					}
+				}]
+			}
+		})
+	
 	</script>
 </body>
 </html>
