@@ -86,6 +86,23 @@
 							this.fruits[f].pst = 13
 							this.fruits[f].step = 3
 						}
+						if (this.fruits[f].pst == 12 || this.fruits[f].pst == 16) {
+							if (this.fruits[f].pst == 16 && this.fruits[f].type == "yellow" ) {
+								this.score++
+								this.fruits[f].run = false
+
+							} else if (this.fruits[f].pst == 12 && this.fruits[f].type == "red") {
+								this.score++
+								this.fruits[f].run = false
+
+							} else if (this.fruits[f].pst == 12 && this.fruits[f].type == "yellow") {
+								clearInterval(playing)
+								this.play = false
+							} else if (this.fruits[f].pst == 16 && this.fruits[f].type == "red") {
+								clearInterval(playing)
+								this.play = false
+							} // end 
+						}
 					}
 					if (rand(1, 10) % 3 == 1) {
 						this.fruits.push({ id: fruitCount, type: 'red', pst: 1, run: true, step: 1 })
